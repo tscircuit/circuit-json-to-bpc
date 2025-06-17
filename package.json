@@ -14,7 +14,8 @@
     "bun-match-svg": "^0.0.11",
     "circuit-json": "^0.0.212",
     "graphics-debug": "^0.0.46",
-    "tscircuit": "^0.0.497"
+    "tscircuit": "^0.0.497",
+    "tsup-node": "^0.1.0"
   },
   "peerDependencies": {
     "typescript": "^5",
