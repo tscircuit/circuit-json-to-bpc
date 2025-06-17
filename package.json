@@ -1,14 +1,20 @@
 {
   "name": "circuit-json-to-bpc",
-  "module": "index.ts",
+  "main": "dist/index.js",
   "type": "module",
-  "private": true,
+  "scripts": {
+    "build": "tsup-node ./lib/index.ts --format esm --dts -d dist",
+    "format": "biome format --write .",
+    "format:check": "biome format --check ."
+  },
   "devDependencies": {
     "@tscircuit/circuit-json-util": "^0.0.50",
     "@types/bun": "latest",
     "box-pin-color-graph": "^0.0.2",
     "bun-match-svg": "^0.0.11",
-    "circuit-json": "^0.0.212"
+    "circuit-json": "^0.0.212",
+    "graphics-debug": "^0.0.46",
+    "tscircuit": "^0.0.497"
   },
   "peerDependencies": {
     "typescript": "^5",

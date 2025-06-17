@@ -1,6 +1,7 @@
 import type { CircuitJson } from "circuit-json"
 import type { BpcFixedBox, BpcFloatingBox, BpcGraph, BpcPin, FloatingBpcGraph } from "box-pin-color-graph"
 import { cju } from "@tscircuit/circuit-json-util"
+import type {Color} from "./colors"
 
 export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
   const g : FloatingBpcGraph = {
@@ -9,6 +10,7 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
   }
   const schComps = cju(circuitJson).schematic_component.list()
 
+  let disconnectedCounter = 0
   for (const schComp of schComps) {
     const box: BpcFloatingBox = {
       boxId: schComp.schematic_component_id,
@@ -24,14 +26,26 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
 
     for (const schPort of schPorts) {
       const srcPort = cju(circuitJson).source_port.get(schPort.source_port_id)
-      const networkId = srcPort?.subcircuit_connectivity_map_key
-      if (!networkId) {
-        throw new Error(`Source port "${schPort.source_port_id}" has no subcircuit_connectivity_map_key`)
+      let networkId = srcPort?.subcircuit_connectivity_map_key
+      let color: Color = "normal"
+      if (networkId) {
+        const srcNet = cju(circuitJson).source_net.getWhere({
+          subcircuit_connectivity_map_key: srcPort?.subcircuit_connectivity_map_key
+        })
+        if (srcNet && (srcNet.is_power || srcNet.name.startsWith("V"))) {
+          color = "vcc"
+        }
+        if (srcNet && (srcNet.is_ground || srcNet.name.startsWith("GND"))) {
+          color = "gnd"
+        }
+      } else { // if (!networkId) {
+        networkId = `disconnected-${disconnectedCounter++}`
+        color = "not_connected"
       }
       const pin: BpcPin = {
         pinId: schPort.schematic_port_id,
-        color: "blue",
-        networkId: srcPort?.subcircuit_connectivity_map_key!,
+        color,
+        networkId,
         offset: {
           x: schPort.center.x - box.center!.x,
           y: schPort.center.y - box.center!.y
