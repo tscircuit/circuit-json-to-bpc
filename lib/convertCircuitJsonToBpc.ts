@@ -26,6 +26,16 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
 
     g.boxes.push(box)
 
+    // Add center pin for the component
+    const centerPin: BpcPin = {
+      pinId: `${schComp.schematic_component_id}_center`,
+      color: "component_center",
+      networkId: `center_${schComp.schematic_component_id}`,
+      offset: { x: 0, y: 0 },
+      boxId: schComp.schematic_component_id,
+    }
+    g.pins.push(centerPin)
+
     const schPorts = cju(circuitJson).schematic_port.list({
       schematic_component_id: schComp.schematic_component_id,
     })
