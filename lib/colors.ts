@@ -1,3 +1,1 @@
-export type Color ="not_connected" | 
-  "normal" |
-  "vcc" | "gnd"
+export type Color = "not_connected" | "normal" | "vcc" | "gnd"

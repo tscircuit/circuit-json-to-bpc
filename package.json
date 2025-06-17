@@ -10,6 +10,7 @@
     "format:check": "biome format --check ."
   },
   "devDependencies": {
+    "@react-hook/resize-observer": "^2.0.2",
     "@tscircuit/circuit-json-util": "^0.0.50",
     "@types/bun": "latest",
     "@types/react": "^19.1.8",

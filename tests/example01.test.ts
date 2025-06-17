@@ -1,7 +1,7 @@
 import { test, expect } from "bun:test"
 import { runTscircuitCode } from "tscircuit"
 import { getGraphicsForBpcGraph } from "box-pin-color-graph"
-import {convertCircuitJsonToBpc} from "../lib"
+import { convertCircuitJsonToBpc } from "../lib"
 
 test("example01", async () => {
   const circuitJson = await runTscircuitCode(`
@@ -19,6 +19,6 @@ test("example01", async () => {
   const bpcGraph = convertCircuitJsonToBpc(circuitJson)
   const graphics = getGraphicsForBpcGraph(bpcGraph)
   expect(graphics).toMatchGraphicsSvg(import.meta.path, {
-    backgroundColor: "white"
+    backgroundColor: "white",
   })
 })
