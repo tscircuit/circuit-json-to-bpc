@@ -5,9 +5,11 @@
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
-    "bun-match-svg": "^0.0.11"
+    "bun-match-svg": "^0.0.11",
+    "circuit-json": "^0.0.212"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5",
+    "circuit-json": "*"
   }
 }
