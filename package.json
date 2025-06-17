@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "start": "vite",
     "build": "tsup-node ./lib/index.ts --format esm --dts -d dist",
     "format": "biome format --write .",
     "format:check": "biome format --check ."
@@ -11,12 +12,17 @@
   "devDependencies": {
     "@tscircuit/circuit-json-util": "^0.0.50",
     "@types/bun": "latest",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
     "box-pin-color-graph": "^0.0.2",
     "bun-match-svg": "^0.0.11",
     "circuit-json": "^0.0.212",
     "graphics-debug": "^0.0.46",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "tscircuit": "^0.0.497",
-    "tsup-node": "^0.1.0"
+    "tsup-node": "^0.1.0",
+    "vite": "^6.3.5"
   },
   "peerDependencies": {
     "typescript": "^5",
