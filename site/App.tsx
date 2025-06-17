@@ -43,7 +43,7 @@ export default () => {
           console.error("Failed to parse JSON:", err)
         }
       }
-      reader.readAsText(file)
+      reader.readAsText(file!)
     },
     [],
   )
