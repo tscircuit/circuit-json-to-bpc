@@ -4,7 +4,9 @@
   "type": "module",
   "private": true,
   "devDependencies": {
+    "@tscircuit/circuit-json-util": "^0.0.50",
     "@types/bun": "latest",
+    "box-pin-color-graph": "^0.0.2",
     "bun-match-svg": "^0.0.11",
     "circuit-json": "^0.0.212"
   },
