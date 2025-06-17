@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
+    "vercel-build": "vite build",
     "build": "tsup-node ./lib/index.ts --format esm --dts -d dist",
     "format": "biome format --write .",
     "format:check": "biome format --check ."
@@ -15,7 +16,7 @@
     "@types/bun": "latest",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "box-pin-color-graph": "^0.0.2",
+    "box-pin-color-graph": "^0.0.4",
     "bun-match-svg": "^0.0.11",
     "circuit-json": "^0.0.212",
     "graphics-debug": "^0.0.46",
