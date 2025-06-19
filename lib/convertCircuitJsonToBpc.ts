@@ -75,5 +75,66 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
     }
   }
 
+  // Convert schematic net labels into boxes with a single pin
+  const schLabels = cju(circuitJson).schematic_net_label.list()
+  for (const schLabel of schLabels) {
+    const box: BpcFixedBox = {
+      boxId: schLabel.schematic_net_label_id,
+      kind: "fixed",
+      center: schLabel.center,
+    }
+    g.boxes.push(box)
+
+    const srcNet = cju(circuitJson).source_net.get(schLabel.source_net_id)
+    let networkId = srcNet?.subcircuit_connectivity_map_key
+    let color: Color = "normal"
+    if (networkId) {
+      if (srcNet && (srcNet.is_power || srcNet.name.startsWith("V"))) {
+        color = "vcc"
+      }
+      if (srcNet && (srcNet.is_ground || srcNet.name.startsWith("GND"))) {
+        color = "gnd"
+      }
+    } else {
+      networkId = `disconnected-${disconnectedCounter++}`
+      color = "not_connected"
+    }
+
+    let offset = { x: 0, y: 0 }
+    if (schLabel.anchor_position) {
+      offset = {
+        x: schLabel.anchor_position.x - schLabel.center.x,
+        y: schLabel.anchor_position.y - schLabel.center.y,
+      }
+    } else {
+      // Fallback to anchor_side with default width/height of 1
+      const DEFAULT_W = 1
+      const DEFAULT_H = 1
+      switch (schLabel.anchor_side) {
+        case "left":
+          offset = { x: -DEFAULT_W / 2, y: 0 }
+          break
+        case "right":
+          offset = { x: DEFAULT_W / 2, y: 0 }
+          break
+        case "top":
+          offset = { x: 0, y: DEFAULT_H / 2 }
+          break
+        case "bottom":
+          offset = { x: 0, y: -DEFAULT_H / 2 }
+          break
+      }
+    }
+
+    const pin: BpcPin = {
+      pinId: `${schLabel.schematic_net_label_id}_pin`,
+      boxId: schLabel.schematic_net_label_id,
+      networkId,
+      color,
+      offset,
+    }
+    g.pins.push(pin)
+  }
+
   return g
 }
