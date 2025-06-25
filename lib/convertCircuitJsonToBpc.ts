@@ -116,6 +116,13 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
       offset,
     }
     g.pins.push(pin)
+    g.pins.push({
+      pinId: `${schLabel.schematic_net_label_id}_center`,
+      boxId: schLabel.schematic_net_label_id,
+      networkId: `${schLabel.schematic_net_label_id}_center`,
+      color: "red", // "not_connected",
+      offset: { x: 0, y: 0 },
+    })
   }
 
   return g

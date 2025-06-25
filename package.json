@@ -16,7 +16,7 @@
     "@types/bun": "latest",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "box-pin-color-graph": "^0.0.6",
+    "box-pin-color-graph": "^0.0.9",
     "bun-match-svg": "^0.0.11",
     "circuit-json": "^0.0.213",
     "graphics-debug": "^0.0.46",

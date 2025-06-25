@@ -17,6 +17,8 @@ test("example01", async () => {
     )
   `)
 
+  Bun.write("circuit.json", JSON.stringify(circuitJson, null, 2))
+
   const bpcGraph = convertCircuitJsonToBpc(circuitJson)
   const graphics = getGraphicsForBpcGraph(bpcGraph)
   expect(graphics).toMatchGraphicsSvg(import.meta.path, {
