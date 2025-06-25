@@ -106,24 +106,6 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
         x: schLabel.anchor_position.x - schLabel.center.x,
         y: schLabel.anchor_position.y - schLabel.center.y,
       }
-    } else {
-      // Fallback to anchor_side with default width/height of 1
-      const DEFAULT_W = 1
-      const DEFAULT_H = 1
-      switch (schLabel.anchor_side) {
-        case "left":
-          offset = { x: -DEFAULT_W / 2, y: 0 }
-          break
-        case "right":
-          offset = { x: DEFAULT_W / 2, y: 0 }
-          break
-        case "top":
-          offset = { x: 0, y: DEFAULT_H / 2 }
-          break
-        case "bottom":
-          offset = { x: 0, y: -DEFAULT_H / 2 }
-          break
-      }
     }
 
     const pin: BpcPin = {

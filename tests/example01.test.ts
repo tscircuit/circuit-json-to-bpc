@@ -10,6 +10,7 @@ test("example01", async () => {
         <resistor schX={4} name="R1" resistance="1k" />
         <chip name="U1" footprint="soic8" connections={{
           pin1: "R1.1",
+          pin2: "net.TESTNET",
           pin6: "R1.2"
         }} />
       </board>
