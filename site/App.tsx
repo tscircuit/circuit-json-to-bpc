@@ -68,13 +68,13 @@ export default () => {
 
   return (
     <div
-      className="min-h-screen flex flex-col items-center justify-center bg-gray-900 text-white p-4"
+      className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-4"
       onDrop={handleDrop}
       onDragOver={(e) => e.preventDefault()}
     >
       {!circuitJson ? (
         <div className="flex flex-col text-center">
-          <h1 className="text-3xl font-bold mb-8">
+          <h1 className="text-3xl font-bold mb-8 text-white">
             Circuit JSON to BPC Converter
           </h1>
           <div className="border-2 border-dashed border-gray-500 rounded-lg p-12">
@@ -89,7 +89,7 @@ export default () => {
                 onChange={handleFileSelect}
                 className="hidden"
               />
-              <span className="bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600 transition-colors">
+              <span className="bg-gray-700 px-4 py-2 rounded-md hover:bg-gray-600 transition-colors text-white">
                 Choose File
               </span>
             </label>

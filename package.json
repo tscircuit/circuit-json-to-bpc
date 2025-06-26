@@ -8,17 +8,18 @@
     "vercel-build": "vite build",
     "build": "tsup-node ./lib/index.ts --format esm --dts -d dist",
     "format": "biome format --write .",
-    "format:check": "biome format --check ."
+    "format:check": "biome format ."
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.0.5",
     "@react-hook/resize-observer": "^2.0.2",
     "@tscircuit/circuit-json-util": "^0.0.50",
     "@types/bun": "latest",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "box-pin-color-graph": "^0.0.6",
+    "box-pin-color-graph": "^0.0.9",
     "bun-match-svg": "^0.0.11",
-    "circuit-json": "^0.0.212",
+    "circuit-json": "^0.0.213",
     "graphics-debug": "^0.0.46",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
