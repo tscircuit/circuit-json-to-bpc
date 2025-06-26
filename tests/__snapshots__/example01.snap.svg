@@ -67,8 +67,8 @@ unnamedsubcircuit94_connectivity_net1" data-x="-1.23" data-y="0.1000000000000000
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_0_center
-red
-schematic_net_label_0_center" data-x="-0.6000000000000001" data-y="0.10000000000000003" cx="104.74769220300573" cy="310.4782805583815" r="3" fill="red" />
+netlabel_center
+schematic_net_label_0_center" data-x="-0.6000000000000001" data-y="0.10000000000000003" cx="104.74769220300573" cy="310.4782805583815" r="3" fill="hsl(338.4, 100%, 50%, 1)" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_1_pin
@@ -77,8 +77,8 @@ unnamedsubcircuit94_connectivity_net3" data-x="1.32" data-y="-0.3000000000000000
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_1_center
-red
-schematic_net_label_1_center" data-x="0.6000000000000001" data-y="-0.30000000000000004" cx="219.00832550242757" cy="348.5651583248555" r="3" fill="red" />
+netlabel_center
+schematic_net_label_1_center" data-x="0.6000000000000001" data-y="-0.30000000000000004" cx="219.00832550242757" cy="348.5651583248555" r="3" fill="hsl(338.4, 100%, 50%, 1)" />
   </g>
   <g>
     <polyline data-points="3.4487093,0.0002732499999993365 -0.6000000000000001,0.30000000000000004" data-type="line" data-label="" points="490.2544327557215,319.97398190162585 104.74769220300573,291.4348416751445" fill="none" stroke="hsl(30, 100%, 50%, 0.2)" stroke-width="1" />
