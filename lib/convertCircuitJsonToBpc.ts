@@ -9,7 +9,7 @@ import type {
 } from "box-pin-color-graph"
 import { cju } from "@tscircuit/circuit-json-util"
 import type { Color } from "./colors"
-import {getUnitVecFromAnchorSide} from "./getUnitVecFromAnchorSide"
+import { getUnitVecFromAnchorSide } from "./getUnitVecFromAnchorSide"
 
 export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
   const g: MixedBpcGraph = {
@@ -108,7 +108,9 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
     const netLabelDir = getUnitVecFromAnchorSide(schLabel.anchor_side)
 
     const netLabelCenter = {
-      x: schLabel.anchor_position!.x + netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
+      x:
+        schLabel.anchor_position!.x +
+        netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
       y: schLabel.anchor_position!.y + netLabelDir.y * 0.18,
     }
 

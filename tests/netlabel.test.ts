@@ -18,6 +18,7 @@ test("netlabel box and pin", () => {
       source_net_id: "net1",
       name: "VCC",
       subcircuit_connectivity_map_key: "net1",
+      member_source_group_ids: [],
     },
   ]
 

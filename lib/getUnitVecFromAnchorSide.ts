@@ -1,3 +1,5 @@
+import type { Vec2 } from "box-pin-color-graph"
+
 type AnchorSide = "left" | "right" | "top" | "bottom"
 
 export const getUnitVecFromAnchorSide = (anchorSide: AnchorSide): Vec2 => {
