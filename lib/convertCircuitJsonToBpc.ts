@@ -5,12 +5,14 @@ import type {
   BpcGraph,
   BpcPin,
   FloatingBpcGraph,
+  MixedBpcGraph,
 } from "box-pin-color-graph"
 import { cju } from "@tscircuit/circuit-json-util"
 import type { Color } from "./colors"
+import {getUnitVecFromAnchorSide} from "./getUnitVecFromAnchorSide"
 
 export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
-  const g: FloatingBpcGraph = {
+  const g: MixedBpcGraph = {
     boxes: [],
     pins: [],
   }
@@ -100,11 +102,21 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
       color = "not_connected"
     }
 
+    // TODO use schLabel.center when core fixes the calculation
+    // const netLabelCenter = schLabel.center
+
+    const netLabelDir = getUnitVecFromAnchorSide(schLabel.anchor_side)
+
+    const netLabelCenter = {
+      x: schLabel.anchor_position!.x + netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
+      y: schLabel.anchor_position!.y + netLabelDir.y * 0.18,
+    }
+
     let offset = { x: 0, y: 0 }
     if (schLabel.anchor_position) {
       offset = {
-        x: schLabel.anchor_position.x - schLabel.center.x,
-        y: schLabel.anchor_position.y - schLabel.center.y,
+        x: schLabel.anchor_position.x - netLabelCenter.x,
+        y: schLabel.anchor_position.y - netLabelCenter.y,
       }
     }
 

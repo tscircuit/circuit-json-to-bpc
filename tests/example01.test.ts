@@ -11,13 +11,12 @@ test("example01", async () => {
         <chip name="U1" footprint="soic8" connections={{
           pin1: "R1.1",
           pin2: "net.TESTNET",
-          pin6: "R1.2"
+          pin6: "R1.2",
+          pin5: "net.OTHERNET"
         }} />
       </board>
     )
   `)
-
-  Bun.write("circuit.json", JSON.stringify(circuitJson, null, 2))
 
   const bpcGraph = convertCircuitJsonToBpc(circuitJson)
   const graphics = getGraphicsForBpcGraph(bpcGraph)

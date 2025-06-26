@@ -1,3 +1,1 @@
-export interface ConvertContext {
-  
-}
+export interface ConvertContext {}
