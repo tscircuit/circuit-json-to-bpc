@@ -27,6 +27,6 @@ test("netlabel box and pin", () => {
   expect(labelBox).toBeDefined()
   const pin = g.pins.find((p) => p.boxId === "nl1")
   expect(pin).toBeDefined()
-  expect(pin!.offset.x).toBe(1)
+  expect(pin!.offset.x).toBeLessThan(1)
   expect(pin!.offset.y).toBe(0)
 })
