@@ -4,7 +4,6 @@ import type {
   BpcFloatingBox,
   BpcGraph,
   BpcPin,
-  FloatingBpcGraph,
   MixedBpcGraph,
 } from "box-pin-color-graph"
 import { cju } from "@tscircuit/circuit-json-util"
