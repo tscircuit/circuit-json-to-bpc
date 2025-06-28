@@ -108,7 +108,7 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
 
     const netLabelCenter = {
       x:
-        schLabel.anchor_position!.x -
+        schLabel.anchor_position!.x +
         netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
       y: schLabel.anchor_position!.y - netLabelDir.y * 0.18,
     }

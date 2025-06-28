@@ -53,7 +53,7 @@ schematic_net_label_1_center" data-x="1.4" data-y="0.8" cx="426.6666666666667" c
   <g>
     <circle data-type="point" data-label="schematic_net_label_2_pin
 normal
-unnamedsubcircuit85_connectivity_net1" data-x="0.42000000000000015" data-y="-0.2" cx="165.33333333333343" cy="346.66666666666663" r="3" fill="blue" />
+unnamedsubcircuit85_connectivity_net1" data-x="0.78" data-y="-0.2" cx="261.33333333333337" cy="346.66666666666663" r="3" fill="blue" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_2_center
@@ -63,7 +63,7 @@ schematic_net_label_2_center" data-x="0.6000000000000001" data-y="-0.2" cx="213.
   <g>
     <circle data-type="point" data-label="schematic_net_label_3_pin
 normal
-unnamedsubcircuit85_connectivity_net2" data-x="0.2400000000000001" data-y="0" cx="117.3333333333334" cy="293.3333333333333" r="3" fill="blue" />
+unnamedsubcircuit85_connectivity_net2" data-x="0.9600000000000001" data-y="0" cx="309.3333333333334" cy="293.3333333333333" r="3" fill="blue" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_3_center
@@ -73,7 +73,7 @@ schematic_net_label_3_center" data-x="0.6000000000000001" data-y="0" cx="213.333
   <g>
     <circle data-type="point" data-label="schematic_net_label_4_pin
 normal
-unnamedsubcircuit85_connectivity_net3" data-x="0.2400000000000001" data-y="0.20000000000000007" cx="117.3333333333334" cy="239.99999999999994" r="3" fill="blue" />
+unnamedsubcircuit85_connectivity_net3" data-x="0.9600000000000001" data-y="0.20000000000000007" cx="309.3333333333334" cy="239.99999999999994" r="3" fill="blue" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_4_center
@@ -84,13 +84,13 @@ schematic_net_label_4_center" data-x="0.6000000000000001" data-y="0.200000000000
     <polyline data-points="0.6000000000000001,-0.4 1.4,0.6200000000000001" data-type="line" data-label="" points="213.3333333333334,400 426.6666666666667,127.99999999999994" fill="none" stroke="hsl(32.72727272727273, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
-    <polyline data-points="0.6000000000000001,-0.2 0.42000000000000015,-0.2" data-type="line" data-label="" points="213.3333333333334,346.66666666666663 165.33333333333343,346.66666666666663" fill="none" stroke="hsl(65.45454545454545, 100%, 50%, 0.2)" stroke-width="1" />
+    <polyline data-points="0.6000000000000001,-0.2 0.78,-0.2" data-type="line" data-label="" points="213.3333333333334,346.66666666666663 261.33333333333337,346.66666666666663" fill="none" stroke="hsl(65.45454545454545, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
-    <polyline data-points="0.6000000000000001,0 0.2400000000000001,0" data-type="line" data-label="" points="213.3333333333334,293.3333333333333 117.3333333333334,293.3333333333333" fill="none" stroke="hsl(98.18181818181819, 100%, 50%, 0.2)" stroke-width="1" />
+    <polyline data-points="0.6000000000000001,0 0.9600000000000001,0" data-type="line" data-label="" points="213.3333333333334,293.3333333333333 309.3333333333334,293.3333333333333" fill="none" stroke="hsl(98.18181818181819, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
-    <polyline data-points="0.6000000000000001,0.20000000000000007 0.2400000000000001,0.20000000000000007" data-type="line" data-label="" points="213.3333333333334,239.99999999999994 117.3333333333334,239.99999999999994" fill="none" stroke="hsl(130.9090909090909, 100%, 50%, 0.2)" stroke-width="1" />
+    <polyline data-points="0.6000000000000001,0.20000000000000007 0.9600000000000001,0.20000000000000007" data-type="line" data-label="" points="213.3333333333334,239.99999999999994 309.3333333333334,239.99999999999994" fill="none" stroke="hsl(130.9090909090909, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
     <polyline data-points="0.6000000000000001,0.4 2,-0.8200000000000001" data-type="line" data-label="" points="213.3333333333334,186.66666666666663 586.6666666666667,512" fill="none" stroke="hsl(163.63636363636363, 100%, 50%, 0.2)" stroke-width="1" />
@@ -105,13 +105,13 @@ schematic_net_label_4_center" data-x="0.6000000000000001" data-y="0.200000000000
     <rect data-type="rect" data-label="schematic_net_label_1" data-x="1.4" data-y="0.7100000000000001" x="413.33333333333337" y="66.6666666666666" width="26.666666666666686" height="74.66666666666669" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
   </g>
   <g>
-    <rect data-type="rect" data-label="schematic_net_label_2" data-x="0.5100000000000001" data-y="-0.2" x="152.00000000000009" y="333.3333333333333" width="74.66666666666666" height="26.666666666666686" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
+    <rect data-type="rect" data-label="schematic_net_label_2" data-x="0.6900000000000001" data-y="-0.2" x="200.00000000000006" y="333.3333333333333" width="74.66666666666669" height="26.666666666666686" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
   </g>
   <g>
-    <rect data-type="rect" data-label="schematic_net_label_3" data-x="0.4200000000000001" data-y="0" x="104.00000000000007" y="280" width="122.66666666666667" height="26.66666666666663" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
+    <rect data-type="rect" data-label="schematic_net_label_3" data-x="0.78" data-y="0" x="200.00000000000006" y="280" width="122.66666666666669" height="26.66666666666663" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
   </g>
   <g>
-    <rect data-type="rect" data-label="schematic_net_label_4" data-x="0.4200000000000001" data-y="0.20000000000000007" x="104.00000000000007" y="226.66666666666663" width="122.66666666666667" height="26.666666666666657" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
+    <rect data-type="rect" data-label="schematic_net_label_4" data-x="0.78" data-y="0.20000000000000007" x="200.00000000000006" y="226.66666666666663" width="122.66666666666669" height="26.666666666666657" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.00375" />
   </g>
   <g id="crosshair" style="display: none">
     <line id="crosshair-h" y1="0" y2="640" stroke="#666" stroke-width="0.5" />
