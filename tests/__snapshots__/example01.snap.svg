@@ -63,22 +63,22 @@ disconnected-3" data-x="0.6000000000000001" data-y="0.30000000000000004" cx="219
   <g>
     <circle data-type="point" data-label="schematic_net_label_0_pin
 normal
-unnamedsubcircuit94_connectivity_net1" data-x="-1.23" data-y="0.10000000000000003" cx="44.760859720809265" cy="310.4782805583815" r="3" fill="blue" />
+unnamedsubcircuit94_connectivity_net1" data-x="-0.6000000000000001" data-y="0.10000000000000003" cx="104.74769220300573" cy="310.4782805583815" r="3" fill="blue" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_0_center
 netlabel_center
-schematic_net_label_0_center" data-x="-0.6000000000000001" data-y="0.10000000000000003" cx="104.74769220300573" cy="310.4782805583815" r="3" fill="hsl(338.4, 100%, 50%, 1)" />
+schematic_net_label_0_center" data-x="-1.23" data-y="0.10000000000000003" cx="44.760859720809265" cy="310.4782805583815" r="3" fill="hsl(338.4, 100%, 50%, 1)" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_1_pin
 normal
-unnamedsubcircuit94_connectivity_net3" data-x="1.32" data-y="-0.30000000000000004" cx="287.5647054820807" cy="348.5651583248555" r="3" fill="blue" />
+unnamedsubcircuit94_connectivity_net3" data-x="0.6000000000000001" data-y="-0.30000000000000004" cx="219.00832550242757" cy="348.5651583248555" r="3" fill="blue" />
   </g>
   <g>
     <circle data-type="point" data-label="schematic_net_label_1_center
 netlabel_center
-schematic_net_label_1_center" data-x="0.6000000000000001" data-y="-0.30000000000000004" cx="219.00832550242757" cy="348.5651583248555" r="3" fill="hsl(338.4, 100%, 50%, 1)" />
+schematic_net_label_1_center" data-x="1.32" data-y="-0.30000000000000004" cx="287.5647054820807" cy="348.5651583248555" r="3" fill="hsl(338.4, 100%, 50%, 1)" />
   </g>
   <g>
     <polyline data-points="3.4487093,0.0002732499999993365 -0.6000000000000001,0.30000000000000004" data-type="line" data-label="" points="490.2544327557215,319.97398190162585 104.74769220300573,291.4348416751445" fill="none" stroke="hsl(30, 100%, 50%, 0.2)" stroke-width="1" />
@@ -87,10 +87,10 @@ schematic_net_label_1_center" data-x="0.6000000000000001" data-y="-0.30000000000
     <polyline data-points="4.5512907,-0.0002732499999993365 0.6000000000000001,-0.10000000000000003" data-type="line" data-label="" points="595.2391402791908,320.02601809837415 219.00832550242757,329.5217194416185" fill="none" stroke="hsl(60, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
-    <polyline data-points="-0.6000000000000001,0.10000000000000003 -1.23,0.10000000000000003" data-type="line" data-label="" points="104.74769220300573,310.4782805583815 44.760859720809265,310.4782805583815" fill="none" stroke="hsl(120, 100%, 50%, 0.2)" stroke-width="1" />
+    <polyline data-points="-0.6000000000000001,0.10000000000000003 -0.6000000000000001,0.10000000000000003" data-type="line" data-label="" points="104.74769220300573,310.4782805583815 104.74769220300573,310.4782805583815" fill="none" stroke="hsl(120, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
-    <polyline data-points="0.6000000000000001,-0.30000000000000004 1.32,-0.30000000000000004" data-type="line" data-label="" points="219.00832550242757,348.5651583248555 287.5647054820807,348.5651583248555" fill="none" stroke="hsl(210, 100%, 50%, 0.2)" stroke-width="1" />
+    <polyline data-points="0.6000000000000001,-0.30000000000000004 0.6000000000000001,-0.30000000000000004" data-type="line" data-label="" points="219.00832550242757,348.5651583248555 219.00832550242757,348.5651583248555" fill="none" stroke="hsl(210, 100%, 50%, 0.2)" stroke-width="1" />
   </g>
   <g>
     <rect data-type="rect" data-label="schematic_component_0" data-x="4" data-y="0" x="485.4935730349123" y="315.2131221808166" width="114.50642696508771" height="9.573755638366833" fill="rgba(0, 0, 0, 0.2)" stroke="black" stroke-width="0.010502304821428571" />

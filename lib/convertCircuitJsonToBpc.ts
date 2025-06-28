@@ -79,13 +79,6 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
   // Convert schematic net labels into boxes with a single pin
   const schLabels = cju(circuitJson).schematic_net_label.list()
   for (const schLabel of schLabels) {
-    const box: BpcFixedBox = {
-      boxId: schLabel.schematic_net_label_id,
-      kind: "fixed",
-      center: schLabel.center,
-    }
-    g.boxes.push(box)
-
     const srcNet = cju(circuitJson).source_net.get(schLabel.source_net_id)
     let networkId = srcNet?.subcircuit_connectivity_map_key
     let color: Color = "normal"
@@ -108,7 +101,7 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
 
     const netLabelCenter = {
       x:
-        schLabel.anchor_position!.x +
+        schLabel.anchor_position!.x -
         netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
       y: schLabel.anchor_position!.y - netLabelDir.y * 0.18,
     }
@@ -120,6 +113,13 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
         y: schLabel.anchor_position.y - netLabelCenter.y,
       }
     }
+
+    const box: BpcFixedBox = {
+      boxId: schLabel.schematic_net_label_id,
+      kind: "fixed",
+      center: netLabelCenter,
+    }
+    g.boxes.push(box)
 
     const pin: BpcPin = {
       pinId: `${schLabel.schematic_net_label_id}_pin`,
