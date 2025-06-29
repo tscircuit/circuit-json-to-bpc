@@ -1,4 +1,4 @@
-import type { Vec2 } from "box-pin-color-graph"
+import type { Vec2 } from "bpc-graph"
 
 type AnchorSide = "left" | "right" | "top" | "bottom"
 

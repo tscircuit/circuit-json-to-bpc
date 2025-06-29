@@ -2,7 +2,7 @@ import { useCallback, useState } from "react"
 import { InteractiveGraphics } from "graphics-debug/react"
 import { convertCircuitJsonToBpc } from "../lib/convertCircuitJsonToBpc"
 import type { CircuitJson } from "circuit-json"
-import { getGraphicsForBpcGraph, type BpcGraph } from "box-pin-color-graph"
+import { getGraphicsForBpcGraph, type BpcGraph } from "bpc-graph"
 
 export default () => {
   const [circuitJson, setCircuitJson] = useState<CircuitJson | null>(null)

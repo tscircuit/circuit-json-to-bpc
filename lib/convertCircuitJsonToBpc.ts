@@ -5,7 +5,7 @@ import type {
   BpcGraph,
   BpcPin,
   MixedBpcGraph,
-} from "box-pin-color-graph"
+} from "bpc-graph"
 import { cju } from "@tscircuit/circuit-json-util"
 import type { Color } from "./colors"
 import { getUnitVecFromAnchorSide } from "./getUnitVecFromAnchorSide"

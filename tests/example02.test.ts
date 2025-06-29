@@ -1,6 +1,6 @@
 import { test, expect } from "bun:test"
 import { runTscircuitCode } from "tscircuit"
-import { getGraphicsForBpcGraph } from "box-pin-color-graph"
+import { getGraphicsForBpcGraph } from "bpc-graph"
 import { convertCircuitJsonToBpc } from "../lib"
 
 test("example01", async () => {

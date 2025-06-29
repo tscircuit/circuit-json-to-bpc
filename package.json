@@ -17,7 +17,7 @@
     "@types/bun": "latest",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
-    "box-pin-color-graph": "^0.0.9",
+    "bpc-graph": "^0.0.14",
     "bun-match-svg": "^0.0.11",
     "circuit-json": "^0.0.213",
     "graphics-debug": "^0.0.46",
@@ -29,6 +29,7 @@
   },
   "peerDependencies": {
     "typescript": "^5",
-    "circuit-json": "*"
+    "circuit-json": "*",
+    "bpc-graph": "*"
   }
 }
