@@ -10,7 +10,12 @@ import { cju } from "@tscircuit/circuit-json-util"
 import type { Color } from "./colors"
 import { getUnitVecFromAnchorSide } from "./getUnitVecFromAnchorSide"
 
-export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
+export const convertCircuitJsonToBpc = (
+  circuitJson: CircuitJson,
+  opts: {
+    inferNetLabels?: boolean
+  } = {},
+): BpcGraph => {
   const g: MixedBpcGraph = {
     boxes: [],
     pins: [],
@@ -118,6 +123,11 @@ export const convertCircuitJsonToBpc = (circuitJson: CircuitJson): BpcGraph => {
       boxId: schLabel.schematic_net_label_id,
       kind: "fixed",
       center: netLabelCenter,
+      boxAttributes: {
+        is_net_label: true,
+        source_net_id: schLabel.source_net_id,
+        source_trace_id: schLabel.source_trace_id,
+      },
     }
     g.boxes.push(box)
 
