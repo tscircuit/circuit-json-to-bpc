@@ -51,7 +51,7 @@ export const convertCircuitJsonToBpc = (
       color: "component_center",
       networkId: `center_${schComp.schematic_component_id}`,
       offset: { x: 0, y: 0 },
-      boxId: schComp.schematic_component_id,
+      boxId: maybeMakeIdReadable(schComp.schematic_component_id),
     }
     g.pins.push(centerPin)
 

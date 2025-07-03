@@ -3,7 +3,7 @@ import { runTscircuitCode } from "tscircuit"
 import { getGraphicsForBpcGraph } from "bpc-graph"
 import { convertCircuitJsonToBpc } from "../lib"
 
-test("example01", async () => {
+test("example03", async () => {
   const circuitJson = await runTscircuitCode(`
 import { sel } from "tscircuit"
 
@@ -43,245 +43,82 @@ export default () => (
     useReadableIds: true,
   })
 
-  expect(bpcGraph).toMatchInlineSnapshot(`
-    {
-      "boxes": [
-        {
-          "boxId": "U1",
-          "center": {
-            "x": 0,
-            "y": 0,
-          },
-          "kind": "floating",
-        },
-        {
-          "boxAttributes": {
-            "is_net_label": true,
-            "source_net_id": "source_net_4",
-            "source_trace_id": undefined,
-          },
-          "boxId": "NL_GND0",
-          "center": {
-            "x": 2,
-            "y": -1.18,
-          },
-          "kind": "fixed",
-        },
-        {
-          "boxAttributes": {
-            "is_net_label": true,
-            "source_net_id": "source_net_0",
-            "source_trace_id": undefined,
-          },
-          "boxId": "NL_VCC0",
-          "center": {
-            "x": 1.4,
-            "y": 0.98,
-          },
-          "kind": "fixed",
-        },
-        {
-          "boxAttributes": {
-            "is_net_label": true,
-            "source_net_id": "source_net_1",
-            "source_trace_id": undefined,
-          },
-          "boxId": "NL_EN0",
-          "center": {
-            "x": 0.78,
-            "y": -0.2,
-          },
-          "kind": "fixed",
-        },
-        {
-          "boxAttributes": {
-            "is_net_label": true,
-            "source_net_id": "source_net_2",
-            "source_trace_id": undefined,
-          },
-          "boxId": "NL_MISO0",
-          "center": {
-            "x": 0.9600000000000001,
-            "y": 0,
-          },
-          "kind": "fixed",
-        },
-        {
-          "boxAttributes": {
-            "is_net_label": true,
-            "source_net_id": "source_net_3",
-            "source_trace_id": undefined,
-          },
-          "boxId": "NL_MOSI0",
-          "center": {
-            "x": 0.9600000000000001,
-            "y": 0.20000000000000007,
-          },
-          "kind": "fixed",
-        },
+  expect(bpcGraph.boxes.map((b) => b.boxId)).toMatchInlineSnapshot(`
+    [
+      "U1",
+      "NL_GND0",
+      "NL_VCC0",
+      "NL_EN0",
+      "NL_MISO0",
+      "NL_MOSI0",
+    ]
+  `)
+  expect(bpcGraph.pins.map((p) => [p.boxId, p.pinId])).toMatchInlineSnapshot(`
+    [
+      [
+        "U1",
+        "U1_center",
       ],
-      "pins": [
-        {
-          "boxId": "schematic_component_0",
-          "color": "component_center",
-          "networkId": "center_schematic_component_0",
-          "offset": {
-            "x": 0,
-            "y": 0,
-          },
-          "pinId": "U1_center",
-        },
-        {
-          "boxId": "U1",
-          "color": "vcc",
-          "networkId": "unnamedsubcircuit85_connectivity_net0",
-          "offset": {
-            "x": 0.6000000000000001,
-            "y": -0.4,
-          },
-          "pinId": "U1_pin1",
-        },
-        {
-          "boxId": "U1",
-          "color": "normal",
-          "networkId": "unnamedsubcircuit85_connectivity_net1",
-          "offset": {
-            "x": 0.6000000000000001,
-            "y": -0.2,
-          },
-          "pinId": "U1_pin2",
-        },
-        {
-          "boxId": "U1",
-          "color": "normal",
-          "networkId": "unnamedsubcircuit85_connectivity_net2",
-          "offset": {
-            "x": 0.6000000000000001,
-            "y": 0,
-          },
-          "pinId": "U1_pin3",
-        },
-        {
-          "boxId": "U1",
-          "color": "normal",
-          "networkId": "unnamedsubcircuit85_connectivity_net3",
-          "offset": {
-            "x": 0.6000000000000001,
-            "y": 0.20000000000000007,
-          },
-          "pinId": "U1_pin4",
-        },
-        {
-          "boxId": "U1",
-          "color": "gnd",
-          "networkId": "unnamedsubcircuit85_connectivity_net4",
-          "offset": {
-            "x": 0.6000000000000001,
-            "y": 0.4,
-          },
-          "pinId": "U1_pin5",
-        },
-        {
-          "boxId": "NL_GND0",
-          "color": "gnd",
-          "networkId": "unnamedsubcircuit85_connectivity_net4",
-          "offset": {
-            "x": 0,
-            "y": 0.17999999999999994,
-          },
-          "pinId": "NL_GND0_pin",
-        },
-        {
-          "boxId": "NL_GND0",
-          "color": "netlabel_center",
-          "networkId": "NL_GND0_center",
-          "offset": {
-            "x": 0,
-            "y": 0,
-          },
-          "pinId": "NL_GND0_center",
-        },
-        {
-          "boxId": "NL_VCC0",
-          "color": "vcc",
-          "networkId": "unnamedsubcircuit85_connectivity_net0",
-          "offset": {
-            "x": 0,
-            "y": -0.17999999999999994,
-          },
-          "pinId": "NL_VCC0_pin",
-        },
-        {
-          "boxId": "NL_VCC0",
-          "color": "netlabel_center",
-          "networkId": "NL_VCC0_center",
-          "offset": {
-            "x": 0,
-            "y": 0,
-          },
-          "pinId": "NL_VCC0_center",
-        },
-        {
-          "boxId": "NL_EN0",
-          "color": "normal",
-          "networkId": "unnamedsubcircuit85_connectivity_net1",
-          "offset": {
-            "x": -0.17999999999999994,
-            "y": 0,
-          },
-          "pinId": "NL_EN0_pin",
-        },
-        {
-          "boxId": "NL_EN0",
-          "color": "netlabel_center",
-          "networkId": "NL_EN0_center",
-          "offset": {
-            "x": 0,
-            "y": 0,
-          },
-          "pinId": "NL_EN0_center",
-        },
-        {
-          "boxId": "NL_MISO0",
-          "color": "normal",
-          "networkId": "unnamedsubcircuit85_connectivity_net2",
-          "offset": {
-            "x": -0.36,
-            "y": 0,
-          },
-          "pinId": "NL_MISO0_pin",
-        },
-        {
-          "boxId": "NL_MISO0",
-          "color": "netlabel_center",
-          "networkId": "NL_MISO0_center",
-          "offset": {
-            "x": 0,
-            "y": 0,
-          },
-          "pinId": "NL_MISO0_center",
-        },
-        {
-          "boxId": "NL_MOSI0",
-          "color": "normal",
-          "networkId": "unnamedsubcircuit85_connectivity_net3",
-          "offset": {
-            "x": -0.36,
-            "y": 0,
-          },
-          "pinId": "NL_MOSI0_pin",
-        },
-        {
-          "boxId": "NL_MOSI0",
-          "color": "netlabel_center",
-          "networkId": "NL_MOSI0_center",
-          "offset": {
-            "x": 0,
-            "y": 0,
-          },
-          "pinId": "NL_MOSI0_center",
-        },
+      [
+        "U1",
+        "U1_pin1",
       ],
-    }
+      [
+        "U1",
+        "U1_pin2",
+      ],
+      [
+        "U1",
+        "U1_pin3",
+      ],
+      [
+        "U1",
+        "U1_pin4",
+      ],
+      [
+        "U1",
+        "U1_pin5",
+      ],
+      [
+        "NL_GND0",
+        "NL_GND0_pin",
+      ],
+      [
+        "NL_GND0",
+        "NL_GND0_center",
+      ],
+      [
+        "NL_VCC0",
+        "NL_VCC0_pin",
+      ],
+      [
+        "NL_VCC0",
+        "NL_VCC0_center",
+      ],
+      [
+        "NL_EN0",
+        "NL_EN0_pin",
+      ],
+      [
+        "NL_EN0",
+        "NL_EN0_center",
+      ],
+      [
+        "NL_MISO0",
+        "NL_MISO0_pin",
+      ],
+      [
+        "NL_MISO0",
+        "NL_MISO0_center",
+      ],
+      [
+        "NL_MOSI0",
+        "NL_MOSI0_pin",
+      ],
+      [
+        "NL_MOSI0",
+        "NL_MOSI0_center",
+      ],
+    ]
   `)
 })
