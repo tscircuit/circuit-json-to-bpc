@@ -3,7 +3,7 @@ import { runTscircuitCode } from "tscircuit"
 import { getGraphicsForBpcGraph } from "bpc-graph"
 import { convertCircuitJsonToBpc } from "../lib"
 
-test("example01", async () => {
+test("example02", async () => {
   const circuitJson = await runTscircuitCode(`
 import { sel } from "tscircuit"
 
