@@ -38,7 +38,7 @@ export const convertCircuitJsonToBpc = (
   let disconnectedCounter = 0
   for (const schComp of schComps) {
     const box: BpcFloatingBox = {
-      boxId: schComp.schematic_component_id,
+      boxId: maybeMakeIdReadable(schComp.schematic_component_id),
       kind: "floating",
       center: schComp.center,
     }
@@ -87,7 +87,7 @@ export const convertCircuitJsonToBpc = (
           x: schPort.center.x - box.center!.x,
           y: schPort.center.y - box.center!.y,
         },
-        boxId: schComp.schematic_component_id,
+        boxId: maybeMakeIdReadable(schComp.schematic_component_id),
       }
 
       g.pins.push(pin)

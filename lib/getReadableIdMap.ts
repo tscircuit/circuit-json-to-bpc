@@ -1,4 +1,5 @@
 import { cju } from "@tscircuit/circuit-json-util"
+import type { CircuitJson } from "circuit-json"
 
 export const getReadableIdMap = (circuitJson: CircuitJson) => {
   const schComps = cju(circuitJson).schematic_component.list()
@@ -16,10 +17,10 @@ export const getReadableIdMap = (circuitJson: CircuitJson) => {
     const srcNet = cju(circuitJson).source_net.get(schLabel.source_net_id)
     if (!srcNet?.name) continue
     let index = 0
-    while (Object.values(readableIdMap).includes(`${srcNet.name}${index}`)) {
+    while (Object.values(readableIdMap).includes(`NL_${srcNet.name}${index}`)) {
       index++
     }
-    readableIdMap[schLabel.schematic_net_label_id] = `${srcNet.name}${index}`
+    readableIdMap[schLabel.schematic_net_label_id] = `NL_${srcNet.name}${index}`
   }
   for (const schPort of schPorts) {
     const srcPort = cju(circuitJson).source_port.get(schPort.source_port_id)
