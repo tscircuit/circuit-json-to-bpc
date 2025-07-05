@@ -4,7 +4,6 @@ import { generateImplicitNetLabels } from "../lib"
 
 test("generate implicit net labels", () => {
   const circuitJson: CircuitJson = [
-    { type: "source_component", source_component_id: "sc1", name: "C1" },
     {
       type: "source_port",
       source_port_id: "p1",
@@ -47,12 +46,6 @@ test("generate implicit net labels", () => {
       subcircuit_connectivity_map_key: "net2",
     },
     {
-      type: "schematic_component",
-      schematic_component_id: "sch1",
-      source_component_id: "sc1",
-      center: { x: 0, y: 0 },
-    },
-    {
       type: "schematic_port",
       schematic_port_id: "sp1",
       source_port_id: "p1",
@@ -80,7 +73,7 @@ test("generate implicit net labels", () => {
 
   const labels = generateImplicitNetLabels(circuitJson)
   expect(labels.length).toBe(1)
-  const label = labels[0]
+  const label = labels[0]!
   expect(label.schematic_net_label_id).toBe("netlabel_for_sp1")
   expect(label.text).toBe("NET1")
   expect(label.anchor_side).toBe("left")
