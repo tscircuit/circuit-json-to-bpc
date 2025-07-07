@@ -3,7 +3,7 @@ import type { CircuitJson } from "circuit-json"
 import { convertCircuitJsonToBpc } from "../lib"
 
 // Circuit JSON from the user example
-const circuitJson: CircuitJson = [
+const circuitJson = [
   {
     type: "source_group",
     source_group_id: "source_group_0",
@@ -540,7 +540,7 @@ const circuitJson: CircuitJson = [
     pin_number: 2,
     display_pin_label: "neg",
   },
-]
+] as unknown as CircuitJson
 
 test("infer net labels for provided circuit", () => {
   const g = convertCircuitJsonToBpc(circuitJson, { inferNetLabels: true })
