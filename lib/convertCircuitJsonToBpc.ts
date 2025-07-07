@@ -10,6 +10,7 @@ import { cju } from "@tscircuit/circuit-json-util"
 import type { Color } from "./colors"
 import { getUnitVecFromAnchorSide } from "./getUnitVecFromAnchorSide"
 import { getReadableIdMap } from "./getReadableIdMap"
+import { generateImplicitNetLabels } from "./generateImplicitNetLabels"
 
 export const convertCircuitJsonToBpc = (
   circuitJson: CircuitJson,
@@ -23,7 +24,10 @@ export const convertCircuitJsonToBpc = (
     pins: [],
   }
   const schComps = cju(circuitJson).schematic_component.list()
-  const schLabels = cju(circuitJson).schematic_net_label.list()
+  let schLabels = cju(circuitJson).schematic_net_label.list()
+  if (opts.inferNetLabels) {
+    schLabels = schLabels.concat(generateImplicitNetLabels(circuitJson))
+  }
 
   const readableIdMap: Record<string, string | undefined> = opts.useReadableIds
     ? getReadableIdMap(circuitJson)

@@ -72,9 +72,15 @@ test("generate implicit net labels", () => {
   ]
 
   const labels = generateImplicitNetLabels(circuitJson)
-  expect(labels.length).toBe(1)
-  const label = labels[0]!
-  expect(label.schematic_net_label_id).toBe("netlabel_for_sp1")
-  expect(label.text).toBe("NET1")
-  expect(label.anchor_side).toBe("left")
+  expect(labels.length).toBe(2)
+  const label1 = labels.find(
+    (l) => l.schematic_net_label_id === "netlabel_for_sp1",
+  )!
+  expect(label1.text).toBe("NET1")
+  expect(label1.anchor_side).toBe("left")
+  const label2 = labels.find(
+    (l) => l.schematic_net_label_id === "netlabel_for_sp3",
+  )!
+  expect(label2.text).toBe("NET2")
+  expect(label2.anchor_side).toBe("left")
 })
