@@ -32,11 +32,6 @@ export const generateImplicitNetLabels = (
     })
     if (!srcNet) continue
 
-    const srcTrace = db.source_trace.getWhere({
-      subcircuit_connectivity_map_key: srcPort.subcircuit_connectivity_map_key,
-    })
-    if (srcTrace) continue
-
     const schematic_net_label_id = `netlabel_for_${sp.schematic_port_id}`
 
     const schematic_net_label: SchematicNetLabel = {
