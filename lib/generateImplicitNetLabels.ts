@@ -44,6 +44,10 @@ export const generateImplicitNetLabels = (
     const schematic_net_label: SchematicNetLabel = {
       type: "schematic_net_label",
       schematic_net_label_id,
+
+      // @ts-ignore - extra field to help with binding inside tscircuit/core
+      schematic_port_id: sp.schematic_port_id,
+
       text: srcNet.name,
       source_net_id: srcNet.source_net_id,
       source_trace_id: srcTrace?.source_trace_id,
