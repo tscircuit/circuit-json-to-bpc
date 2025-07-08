@@ -32,6 +32,10 @@ export const generateImplicitNetLabels = (
     })
     if (!srcNet) continue
 
+    const srcTrace = db.source_trace
+      .list()
+      .find((st) => st.connected_source_port_ids?.includes(sp.source_port_id))
+
     const schematic_net_label_id = `netlabel_for_${sp.schematic_port_id}`
 
     const schematic_net_label: SchematicNetLabel = {
@@ -39,6 +43,7 @@ export const generateImplicitNetLabels = (
       schematic_net_label_id,
       text: srcNet.name,
       source_net_id: srcNet.source_net_id,
+      source_trace_id: srcTrace?.source_trace_id,
       anchor_position: { ...sp.center },
       center: { ...sp.center },
       anchor_side: oppositeSide(sp.facing_direction ?? "right"),
