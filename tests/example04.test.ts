@@ -21,6 +21,9 @@ test("example04", async () => {
         name="C1"
         schX={-3}
         pcbX={-3}
+        connections={{
+          "pin1": "net.TEST1",
+        }}
       />
       <trace from=".R1 > .pin1" to=".C1 > .pin2" />
     </board>
@@ -50,6 +53,19 @@ test("example04", async () => {
           },
           "kind": "floating",
         },
+        {
+          "boxAttributes": {
+            "is_net_label": true,
+            "source_net_id": "source_net_0",
+            "source_trace_id": undefined,
+          },
+          "boxId": "schematic_net_label_0",
+          "center": {
+            "x": -4.0012093,
+            "y": -0.00027334999999961695,
+          },
+          "kind": "fixed",
+        },
       ],
       "pins": [
         {
@@ -65,7 +81,7 @@ test("example04", async () => {
         {
           "boxId": "schematic_component_0",
           "color": "normal",
-          "networkId": "unnamedsubcircuit31_connectivity_net0",
+          "networkId": "unnamedsubcircuit31_connectivity_net1",
           "offset": {
             "x": -0.5512907,
             "y": 0.0002732499999993365,
@@ -94,8 +110,8 @@ test("example04", async () => {
         },
         {
           "boxId": "schematic_component_1",
-          "color": "not_connected",
-          "networkId": "disconnected-1",
+          "color": "normal",
+          "networkId": "unnamedsubcircuit31_connectivity_net0",
           "offset": {
             "x": -0.5512093000000005,
             "y": -0.00027334999999961695,
@@ -105,12 +121,32 @@ test("example04", async () => {
         {
           "boxId": "schematic_component_1",
           "color": "normal",
-          "networkId": "unnamedsubcircuit31_connectivity_net0",
+          "networkId": "unnamedsubcircuit31_connectivity_net1",
           "offset": {
             "x": 0.5512093,
             "y": 0.00027334999999961695,
           },
           "pinId": "schematic_port_3",
+        },
+        {
+          "boxId": "schematic_net_label_0",
+          "color": "normal",
+          "networkId": "unnamedsubcircuit31_connectivity_net0",
+          "offset": {
+            "x": 0.44999999999999973,
+            "y": 0,
+          },
+          "pinId": "schematic_net_label_0_pin",
+        },
+        {
+          "boxId": "schematic_net_label_0",
+          "color": "netlabel_center",
+          "networkId": "schematic_net_label_0_center",
+          "offset": {
+            "x": 0,
+            "y": 0,
+          },
+          "pinId": "schematic_net_label_0_center",
         },
       ],
     }
