@@ -2,6 +2,10 @@
   "name": "circuit-json-to-bpc",
   "main": "dist/index.js",
   "version": "0.0.13",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tscircuit/circuit-json-to-bpc.git"
+  },
   "type": "module",
   "scripts": {
     "start": "vite",
