@@ -23,8 +23,9 @@ export const convertCircuitJsonToBpc = (
     boxes: [],
     pins: [],
   }
-  const schComps = cju(circuitJson).schematic_component.list()
-  let schLabels = cju(circuitJson).schematic_net_label.list()
+  const db = cju(circuitJson)
+  const schComps = db.schematic_component!.list()
+  let schLabels = db.schematic_net_label!.list()
   if (opts.inferNetLabels) {
     schLabels = schLabels.concat(generateImplicitNetLabels(circuitJson))
   }
@@ -59,16 +60,16 @@ export const convertCircuitJsonToBpc = (
     }
     g.pins.push(centerPin)
 
-    const schPorts = cju(circuitJson).schematic_port.list({
+    const schPorts = db.schematic_port!.list({
       schematic_component_id: schComp.schematic_component_id,
     })
 
     for (const schPort of schPorts) {
-      const srcPort = cju(circuitJson).source_port.get(schPort.source_port_id)
+      const srcPort = db.source_port!.get(schPort.source_port_id)
       let networkId = srcPort?.subcircuit_connectivity_map_key
       let color: Color = "normal"
       if (networkId) {
-        const srcNet = cju(circuitJson).source_net.getWhere({
+        const srcNet = db.source_net!.getWhere({
           subcircuit_connectivity_map_key:
             srcPort?.subcircuit_connectivity_map_key,
         })
@@ -100,7 +101,7 @@ export const convertCircuitJsonToBpc = (
 
   // Convert schematic net labels into boxes with a single pin
   for (const schLabel of schLabels) {
-    const srcNet = cju(circuitJson).source_net.get(schLabel.source_net_id)
+    const srcNet = db.source_net!.get(schLabel.source_net_id)
     let networkId = srcNet?.subcircuit_connectivity_map_key
     let color: Color = "normal"
     if (networkId) {
