@@ -10,8 +10,8 @@ export const generateImplicitNetLabels = (
 ): SchematicNetLabel[] => {
   const db = cju(circuitJson)
   const existingLabels = new Set(
-    db.schematic_net_label
-      .list()
+    db
+      .schematic_net_label!.list()
       .map(
         (nl) =>
           `${nl.anchor_position?.x ?? nl.center.x},${nl.anchor_position?.y ?? nl.center.y}`,
@@ -20,22 +20,22 @@ export const generateImplicitNetLabels = (
 
   const newLabels: SchematicNetLabel[] = []
 
-  for (const sp of db.schematic_port.list()) {
+  for (const sp of db.schematic_port!.list()) {
     const key = `${sp.center.x},${sp.center.y}`
     if (existingLabels.has(key)) continue
 
-    const srcPort = db.source_port.get(sp.source_port_id)
+    const srcPort = db.source_port!.get(sp.source_port_id)
     if (!srcPort) continue
 
-    const srcNet = db.source_net.getWhere({
+    const srcNet = db.source_net!.getWhere({
       subcircuit_connectivity_map_key: srcPort.subcircuit_connectivity_map_key,
     })
     if (!srcNet) continue
 
-    const srcTrace = db.source_trace
-      .list()
+    const srcTrace = db
+      .source_trace!.list()
       .find((st) => st.connected_source_port_ids?.includes(sp.source_port_id))
-    const schTrace = db.schematic_trace.getWhere({
+    const schTrace = db.schematic_trace!.getWhere({
       source_trace_id: srcTrace?.source_trace_id,
     })
 
