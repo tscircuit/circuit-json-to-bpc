@@ -7,6 +7,9 @@
     "url": "https://github.com/tscircuit/circuit-json-to-bpc.git"
   },
   "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "start": "vite",
     "vercel-build": "vite build",
