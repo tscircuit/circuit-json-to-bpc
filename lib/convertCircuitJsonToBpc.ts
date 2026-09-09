@@ -116,25 +116,27 @@ export const convertCircuitJsonToBpc = (
       color = "not_connected"
     }
 
-    // TODO use schLabel.center when core fixes the calculation
-    // const netLabelCenter = schLabel.center
-
+    // Core still emits a center that is not the visual box center when
+    // `anchor_position` is present, so reconstruct from the pin. When the
+    // optional `anchor_position` is omitted, `center` is the only geometry.
+    const anchorPosition = schLabel.anchor_position
     const netLabelDir = getUnitVecFromAnchorSide(schLabel.anchor_side)
 
-    const netLabelCenter = {
-      x:
-        schLabel.anchor_position!.x -
-        netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
-      y: schLabel.anchor_position!.y - netLabelDir.y * 0.18,
-    }
+    const netLabelCenter = anchorPosition
+      ? {
+          x:
+            anchorPosition.x -
+            netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
+          y: anchorPosition.y - netLabelDir.y * 0.18,
+        }
+      : schLabel.center
 
-    let offset = { x: 0, y: 0 }
-    if (schLabel.anchor_position) {
-      offset = {
-        x: schLabel.anchor_position.x - netLabelCenter.x,
-        y: schLabel.anchor_position.y - netLabelCenter.y,
-      }
-    }
+    const offset = anchorPosition
+      ? {
+          x: anchorPosition.x - netLabelCenter.x,
+          y: anchorPosition.y - netLabelCenter.y,
+        }
+      : { x: 0, y: 0 }
 
     const box: BpcFixedBox = {
       boxId: maybeMakeIdReadable(schLabel.schematic_net_label_id),
