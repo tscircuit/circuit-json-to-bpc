@@ -25,7 +25,8 @@ export const generateImplicitNetLabels = (
     if (existingLabels.has(key)) continue
 
     const srcPort = db.source_port!.get(sp.source_port_id)
-    if (!srcPort) continue
+    if (!srcPort || srcPort.subcircuit_connectivity_map_key === undefined)
+      continue
 
     const srcNet = db.source_net!.getWhere({
       subcircuit_connectivity_map_key: srcPort.subcircuit_connectivity_map_key,
