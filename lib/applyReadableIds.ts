@@ -58,15 +58,39 @@ export function applyReadableIds(
     }),
   )
 
+  // Networks have their own identity: a pin suffix must not create an edge.
+  const fixedNetworks = new Set(
+    graph.pins
+      .filter((pin) => pin.color !== "netlabel_center")
+      .map((pin) => pin.networkId),
+  )
+  const networkNames = new Map(
+    graph.pins.map((pin) => [
+      pin.networkId,
+      pin.color === "netlabel_center" && !fixedNetworks.has(pin.networkId)
+        ? `${boxIdMap.get(pin.boxId)!}_center`
+        : pin.networkId,
+    ]),
+  )
+  const networkCandidates = [...networkNames].map(([original, preferred]) => ({
+    original,
+    preferred,
+  }))
+  const networkIds = allocateIds(networkCandidates)
+  const networkIdMap = new Map(
+    networkCandidates.map(({ original }, index) => [
+      original,
+      networkIds[index]!,
+    ]),
+  )
+
   for (const box of graph.boxes) {
     box.boxId = boxIdMap.get(box.boxId)!
   }
   for (const [index, pin] of graph.pins.entries()) {
     pin.boxId = boxIdMap.get(pin.boxId)!
     pin.pinId = pinIds[index]!
-    if (pin.color === "netlabel_center") {
-      pin.networkId = pin.pinId
-    }
+    pin.networkId = networkIdMap.get(pin.networkId)!
   }
   return graph
 }

@@ -113,6 +113,11 @@ function expectPreservedGraph(circuit: CircuitJson, inferNetLabels = false) {
   expect(new Set(readable.pins.map((pin) => pin.pinId)).size).toBe(
     raw.pins.length,
   )
+  const networkGroups = (graph: typeof raw) =>
+    graph.pins.map((pin) =>
+      graph.pins.findIndex((other) => other.networkId === pin.networkId),
+    )
+  expect(networkGroups(readable)).toEqual(networkGroups(raw))
   for (const [i, box] of raw.boxes.entries()) {
     expect(readable.boxes[i]).toEqual({
       ...box,
@@ -127,7 +132,7 @@ function expectPreservedGraph(circuit: CircuitJson, inferNetLabels = false) {
       pinId: renamed.pinId,
       boxId: readable.boxes[boxIndex]!.boxId,
       networkId:
-        pin.color === "netlabel_center" ? renamed.pinId : pin.networkId,
+        pin.color === "netlabel_center" ? renamed.networkId : pin.networkId,
     })
     // The actual BPC consumer resolves pins by ID and then follows their box ID.
     expect(getPinPosition(readable, renamed.pinId)).toEqual(
@@ -220,8 +225,34 @@ describe("readable IDs", () => {
       "NL_GND0_pin_1",
       "NL_GND0_center_1",
     ])
-    expect(labelPins[1]!.networkId).toBe(labelPins[1]!.pinId)
+    expect(labelPins[1]!.networkId).toBe("NL_GND0_center")
   })
+
+  test.each(["NL_GND0_center_1", "NL_GND0_center", "label_0_center"])(
+    "preserves network groups when a source network is named %s",
+    (networkId) => {
+      const circuit = components([{ name: "NL", ports: ["GND0_center"] }])
+      addNet(circuit)
+      for (const item of circuit) {
+        if (item.type === "source_port") {
+          item.subcircuit_connectivity_map_key = networkId
+          source_port.parse(item)
+        }
+        if (item.type === "source_net") {
+          item.subcircuit_connectivity_map_key = "ground_network"
+          source_net.parse(item)
+        }
+      }
+      const graph = expectPreservedGraph(circuit)
+      expect(graph.pins[1]!.networkId).toBe(networkId)
+      const center = graph.pins.find((pin) => pin.color === "netlabel_center")!
+      if (networkId === "label_0_center") {
+        expect(center.networkId).toBe(networkId)
+      } else {
+        expect(center.networkId).not.toBe(networkId)
+      }
+    },
+  )
 
   test("reserves inferred labels' existing fallback IDs", () => {
     const circuit = components([{ name: "netlabel_for_sch_0_port_1" }])
