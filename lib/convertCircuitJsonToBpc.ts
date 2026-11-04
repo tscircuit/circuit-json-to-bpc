@@ -9,7 +9,7 @@ import type {
 import { cju } from "@tscircuit/circuit-json-util"
 import type { Color } from "./colors"
 import { getUnitVecFromAnchorSide } from "./getUnitVecFromAnchorSide"
-import { getReadableIdMap } from "./getReadableIdMap"
+import { applyReadableIds } from "./applyReadableIds"
 import { generateImplicitNetLabels } from "./generateImplicitNetLabels"
 
 export const convertCircuitJsonToBpc = (
@@ -30,20 +30,10 @@ export const convertCircuitJsonToBpc = (
     schLabels = schLabels.concat(generateImplicitNetLabels(circuitJson))
   }
 
-  const readableIdMap: Record<string, string | undefined> = opts.useReadableIds
-    ? getReadableIdMap(circuitJson)
-    : {}
-
-  const maybeMakeIdReadable = (id: string) => {
-    if (!opts.useReadableIds) return id
-    if (readableIdMap[id]) return readableIdMap[id]
-    return id
-  }
-
   let disconnectedCounter = 0
   for (const schComp of schComps) {
     const box: BpcFloatingBox = {
-      boxId: maybeMakeIdReadable(schComp.schematic_component_id),
+      boxId: schComp.schematic_component_id,
       kind: "floating",
       center: schComp.center,
     }
@@ -52,11 +42,11 @@ export const convertCircuitJsonToBpc = (
 
     // Add center pin for the component
     const centerPin: BpcPin = {
-      pinId: `${maybeMakeIdReadable(schComp.schematic_component_id)}_center`,
+      pinId: `${schComp.schematic_component_id}_center`,
       color: "component_center",
       networkId: `center_${schComp.schematic_component_id}`,
       offset: { x: 0, y: 0 },
-      boxId: maybeMakeIdReadable(schComp.schematic_component_id),
+      boxId: schComp.schematic_component_id,
     }
     g.pins.push(centerPin)
 
@@ -85,14 +75,14 @@ export const convertCircuitJsonToBpc = (
         color = "not_connected"
       }
       const pin: BpcPin = {
-        pinId: maybeMakeIdReadable(schPort.schematic_port_id),
+        pinId: schPort.schematic_port_id,
         color,
         networkId,
         offset: {
           x: schPort.center.x - box.center!.x,
           y: schPort.center.y - box.center!.y,
         },
-        boxId: maybeMakeIdReadable(schComp.schematic_component_id),
+        boxId: schComp.schematic_component_id,
       }
 
       g.pins.push(pin)
@@ -137,7 +127,7 @@ export const convertCircuitJsonToBpc = (
     }
 
     const box: BpcFixedBox = {
-      boxId: maybeMakeIdReadable(schLabel.schematic_net_label_id),
+      boxId: schLabel.schematic_net_label_id,
       kind: "fixed",
       center: netLabelCenter,
       boxAttributes: {
@@ -149,21 +139,21 @@ export const convertCircuitJsonToBpc = (
     g.boxes.push(box)
 
     const pin: BpcPin = {
-      pinId: `${maybeMakeIdReadable(schLabel.schematic_net_label_id)}_pin`,
-      boxId: maybeMakeIdReadable(schLabel.schematic_net_label_id),
+      pinId: `${schLabel.schematic_net_label_id}_pin`,
+      boxId: schLabel.schematic_net_label_id,
       networkId,
       color,
       offset,
     }
     g.pins.push(pin)
     g.pins.push({
-      pinId: `${maybeMakeIdReadable(schLabel.schematic_net_label_id)}_center`,
-      boxId: maybeMakeIdReadable(schLabel.schematic_net_label_id),
-      networkId: `${maybeMakeIdReadable(schLabel.schematic_net_label_id)}_center`,
+      pinId: `${schLabel.schematic_net_label_id}_center`,
+      boxId: schLabel.schematic_net_label_id,
+      networkId: `${schLabel.schematic_net_label_id}_center`,
       color: "netlabel_center",
       offset: { x: 0, y: 0 },
     })
   }
 
-  return g
+  return opts.useReadableIds ? applyReadableIds(g, circuitJson) : g
 }
