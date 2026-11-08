@@ -101,8 +101,18 @@ export const convertCircuitJsonToBpc = (
 
   // Convert schematic net labels into boxes with a single pin
   for (const schLabel of schLabels) {
-    const srcNet = db.source_net!.get(schLabel.source_net_id)
+    let srcNet = db.source_net!.get(schLabel.source_net_id)
     let networkId = srcNet?.subcircuit_connectivity_map_key
+    // Core's port-to-port trace labels reference an endpoint source port.
+    if (!srcNet) {
+      const srcPort = db.source_port!.get(schLabel.source_net_id)
+      networkId = srcPort?.subcircuit_connectivity_map_key
+      if (networkId) {
+        srcNet = db.source_net!.getWhere({
+          subcircuit_connectivity_map_key: networkId,
+        })
+      }
+    }
     let color: Color = "normal"
     if (networkId) {
       if (srcNet && (srcNet.is_power || srcNet.name.startsWith("V"))) {
