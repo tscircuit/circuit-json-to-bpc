@@ -69,14 +69,16 @@ export const convertCircuitJsonToBpc = (
       let networkId = srcPort?.subcircuit_connectivity_map_key
       let color: Color = "normal"
       if (networkId) {
-        const srcNet = db.source_net!.getWhere({
+        const srcNets = db.source_net!.list({
           subcircuit_connectivity_map_key:
             srcPort?.subcircuit_connectivity_map_key,
         })
-        if (srcNet && (srcNet.is_power || srcNet.name.startsWith("V"))) {
+        if (srcNets.some((net) => net.is_power || net.name.startsWith("V"))) {
           color = "vcc"
         }
-        if (srcNet && (srcNet.is_ground || srcNet.name.startsWith("GND"))) {
+        if (
+          srcNets.some((net) => net.is_ground || net.name.startsWith("GND"))
+        ) {
           color = "gnd"
         }
       } else {
