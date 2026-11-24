@@ -121,12 +121,14 @@ export const convertCircuitJsonToBpc = (
 
     const netLabelDir = getUnitVecFromAnchorSide(schLabel.anchor_side)
 
-    const netLabelCenter = {
-      x:
-        schLabel.anchor_position!.x -
-        netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
-      y: schLabel.anchor_position!.y - netLabelDir.y * 0.18,
-    }
+    const netLabelCenter = schLabel.anchor_position
+      ? {
+          x:
+            schLabel.anchor_position.x -
+            netLabelDir.x * schLabel.text.length * 0.18 * 0.5,
+          y: schLabel.anchor_position.y - netLabelDir.y * 0.18,
+        }
+      : { ...schLabel.center }
 
     let offset = { x: 0, y: 0 }
     if (schLabel.anchor_position) {
